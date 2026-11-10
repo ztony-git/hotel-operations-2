@@ -18,6 +18,7 @@ public class Employee {
     private String department;
     private double payRate;
     private double hoursWorked;
+    private double lastIn;
 
     public Employee(int employeeId, String name, String department, double payRate, double hoursWorked) {
         this.employeeId = employeeId;
@@ -25,6 +26,7 @@ public class Employee {
         this.department = department;
         this.payRate = payRate;
         this.hoursWorked = hoursWorked;
+        this.lastIn = -1;
     }
 
     public int getEmployeeId() {
@@ -78,6 +80,38 @@ public class Employee {
             return hoursWorked - 40;
         } else {
             return 0;
+        }
+    }
+
+    public void punchIn(double hour) {
+        if (hour < 0 || hour >= 24) {
+            System.out.println("Incorrect time.");
+            return;
+        }
+
+        lastIn = hour;
+    }
+
+    public void punchOut(double hour) {
+        if (hour < 0 || hour >= 24) {
+            System.out.println("Incorrect time.");
+            return;
+        }
+        if (lastIn == -1) {
+            System.out.println("Punch in first.");
+            return;
+        }
+
+        double timeWorked = hour >= lastIn ? hour - lastIn : (24 - lastIn) + hour;
+        hoursWorked+=timeWorked;
+        lastIn = -1;
+    }
+
+    public void punchTimeCard(double hour) {
+        if (lastIn == -1) {
+            punchIn(hour);
+        } else {
+            punchOut(hour);
         }
     }
 }
