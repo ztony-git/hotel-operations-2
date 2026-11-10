@@ -24,6 +24,17 @@ public class Main {
         System.out.println("Employee Total Pay: " + employee.getTotalPay());
         System.out.println("Employee Regular Hours: " + employee.getRegularHours());
         System.out.println("Employee Overtime Hours: " + employee.getOvertimeHours());
+        System.out.println("Employee Punch In @ 9: ");
+        employee.punchIn(9);
+        System.out.println("Employee Punch Out @ 18: ");
+        employee.punchOut(18);
+        System.out.println("Employee Hours Worked: " + employee.getHoursWorked());
+        System.out.println("Employee Punch In @ 20: ");
+        employee.punchTimeCard(20);
+        System.out.println("Employee Punch Out @ 4: ");
+        employee.punchTimeCard(4);
+        System.out.println("Employee Hours Worked: " + employee.getHoursWorked());
+
         System.out.println("=======================================================================");
 
         // Test Reservation class
@@ -40,6 +51,15 @@ public class Main {
         System.out.println("Number of Beds: " + room.getNumberOfBeds());
         System.out.println("Price: " + room.getPrice());
         System.out.println("Is Occupied: " + room.isOccupied());
+        System.out.println("Is Dirty: " + room.isDirty());
+        System.out.println("Is Available: " + room.isAvailable());
+        room.checkIn();
+        System.out.println("Is Dirty: " + room.isDirty());
+        System.out.println("Is Available: " + room.isAvailable());
+        room.checkOut();
+        System.out.println("Is Dirty: " + room.isDirty());
+        System.out.println("Is Available: " + room.isAvailable());
+        room.cleanRoom();
         System.out.println("Is Dirty: " + room.isDirty());
         System.out.println("Is Available: " + room.isAvailable());
     }
