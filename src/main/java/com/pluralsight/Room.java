@@ -48,6 +48,10 @@ public class Room {
     }
 
     public void checkIn() {
+        if (!isAvailable()) {
+            System.out.println("Room is taken");
+            return;
+        }
         isDirty = true;
         isOccupied = true;
     }
@@ -57,6 +61,10 @@ public class Room {
     }
 
     public void cleanRoom() {
+        if (isOccupied) {
+            System.out.println("Room is occupied");
+            return;
+        }
         isDirty = false;
     }
 }
